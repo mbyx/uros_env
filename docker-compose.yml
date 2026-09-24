@@ -1,0 +1,18 @@
+services:
+  microros:
+    # image: uros2_env-microros:latest
+    build: .
+    container_name: uros2_env
+    network_mode: "host"
+    ipc: "host"
+    pid: "host"
+    privileged: true
+    environment:
+      - DISPLAY=${DISPLAY}
+    volumes:
+      - ./uros2_ws:/root/workspace
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /dev:/dev
+    tty: true
+    stdin_open: true
+    command: /bin/bash
